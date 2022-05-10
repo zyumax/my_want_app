@@ -1,6 +1,8 @@
 
 <h1 class="display-4 text-primary">商品一覧ページ</h1>
-<p><%= @msg %></p>
+
+<tr><th>合計金額</th></tr>
+<tr><td><%= @total_price %></td></tr>
 
 <div class="container">
   <div class="row">
@@ -13,8 +15,8 @@
             <p class="card-text"><%= product.evaluation %></p>
             <%# <p><%= link_to '詳細はこちらから', product_path(product.id) %>
             <p><%= link_to '詳細はこちら', product_path(product.id), method: :get, local: true %></p>
-            <p><%= link_to '編集はこちら', edit_product_path(product.id), method: :put, local: true %></p>
-            <p><%= link_to '削除', "/products/#{product.id}" , method: :delete, local: true %></p> 
+            <p><%= link_to '編集はこちら', edit_product_path(product.id), method: :get, local: true %></p>
+            <p><%= link_to '削除', "/products/#{product.id}", method: :delete, local: true %></p>  
           </div>
         </div>
       </div>
