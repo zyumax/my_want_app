@@ -1,6 +1,6 @@
 <h1 class="display-4 text-primary">新規登録画面</h1>
-<%= @human %>
-<%= form_for(@product, url: {controller: 'products', action: 'create'}) do |f| %>
+
+<%= form_for(@product, url: {controller: 'products', action: 'update'}) do |f| %>
   <div class="form-group"> 
     <label for="created_at">日付</label>
     <%= f.date_field :created_at, class:"form-control"%>
@@ -26,7 +26,7 @@
     <%= f.select :evaluation, [ ["要検討", 1], ["検討", 2], ["普通", 3], ["欲しい", 4], ["すごく欲しい", 5] ] , class:"form-control" %>
   </div>
   <div class="form-group"> 
-    <%= f.submit "登録", class: "btn btn-primary" %>
+    <%= f.submit "更新", class: "btn btn-primary" %>
   </div>
 
 
