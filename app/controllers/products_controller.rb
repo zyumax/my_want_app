@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
-    @total_price = Product.all.sum(:price)
+    # @total_price = Product.all.sum(:price)
+    @total_price = @products.sum(:price)
   end
 
   def new
