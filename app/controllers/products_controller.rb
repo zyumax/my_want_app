@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    # byebug
     @product = Product.new(product_params)
     if @product.save
       redirect_to root_path
@@ -37,6 +38,10 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.update(product_params)
     redirect_to root_path
+  end
+
+  def predict
+    
   end
 
   private

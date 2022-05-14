@@ -2,6 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-body {
-  background-color: brown;
+.review-stars {
+  display: flex;
+  color: orange;
+  width: 100px;
+  height: 50px;
+}
+
+.card-text {
+  color: aqua;
+}
+
+.star-eva {
+  color: orange;
 }
