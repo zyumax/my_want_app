@@ -2,16 +2,22 @@
 <table class ="table mt-5 mb-5">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Evaluation</th>
+      <th>商品名</th>
+      <th>価格</th>
+      <th>評価</th>
+      <th>更新日時</th>
     </tr>
   </thead>
   <tbody>
       <tr>
         <td><%= @product.name %></td> 
-        <td><%= @product.price %></td> 
+        <td><%= number_to_currency(@product.price, unit: "¥", precision: 0) %></td> 
         <td><%= @product.evaluation %></td>  
+        <td><%= l @product.updated_at, format: :short %></td>
+        <%# <td><%= if @product.updated_at == true
+                  @product.updated_at
+                else 
+                  @product.created_at %>
       </tr>
   </tbody> 
 </table>  

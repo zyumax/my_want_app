@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'products#index'
-  resources :products
   get 'products/predict'
+  resources :products
+  
   # get 'products/index'
   # get 'products/new'
   # post 'products/new', to: 'products#create'
