@@ -41,7 +41,8 @@ class ProductsController < ApplicationController
   end
 
   def predict
-    
+    @products = Product.where('evaluation >= ?', 4)
+    @predict_price = @products.sum(:price)
   end
 
   private

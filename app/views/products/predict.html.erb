@@ -1,1 +1,35 @@
-<h1>TEST</h1>
+<h1 class="display-4 text-primary">支出予測</h1>
+
+<div class = "predict_price">
+<p>合計金額：</p>
+<p><%= number_to_currency(@predict_price, unit: "¥", precision: 0) %></p>
+</div>
+
+<table class ="table mt-5 mb-5">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>金額</th>
+      <th>評価</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td> 
+        <td><%= number_to_currency(product.price, unit: "¥", precision: 0) %></td>  
+        <td class = "star-eva"><%= if product.evaluation == 1
+                "★☆☆☆☆"
+              elsif product.evaluation == 2
+                "★★☆☆☆"
+              elsif product.evaluation == 3
+                "★★★☆☆"
+              elsif product.evaluation == 4
+                "★★★★☆"
+              else product.evaluation == 5
+                "★★★★★"
+              end %></td>  
+      </tr>
+      <% end %>
+  </tbody> 
+</table>  

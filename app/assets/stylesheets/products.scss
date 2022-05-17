@@ -5,8 +5,9 @@
 .review-stars {
   display: flex;
   color: orange;
-  width: 100px;
+  width: 10px;
   height: 50px;
+  font-size: x-large;
 }
 
 .card-text {
@@ -15,4 +16,10 @@
 
 .star-eva {
   color: orange;
+}
+
+.predict_price {
+  color: red;
+  font-size: 20px;
+  display: flex;
 }
