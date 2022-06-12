@@ -1,7 +1,10 @@
 class ProductsController < ApplicationController
+
+  before_action :authenticate_user!
+
   def index
-    @products = Product.all
-    # @total_price = Product.all.sum(:price)
+    @user = User.find(current_user.id)
+    @products = @user.products
     @total_price = @products.sum(:price)
   end
 
@@ -14,8 +17,6 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       redirect_to root_path
-      # @products = Product.all
-      # render 'index'
     else
       render 'new'
     end
@@ -48,6 +49,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :maker_name, :note, :evaluation, :user_id)
+    params.require(:product).permit(:name, :price, :maker_name, :note, :evaluation).merge(user_id: current_user.id)
   end
 end
