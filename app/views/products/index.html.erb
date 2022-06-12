@@ -37,3 +37,6 @@
 </div>
 <p><%= link_to '予測画面(仮)', products_predict_path, class: "btn btn-success" %></p> 
 <p><%= link_to 'マイリストに追加', new_product_path, class: "btn btn-primary" %></p>
+<% if user_signed_in? %>
+  <p><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></p>
+<% end %>
