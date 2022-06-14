@@ -1,18 +1,9 @@
 <h1 class="display-4 text-primary">マイリストに追加</h1>
-<%# <%= form_for(@product, url: {controller: 'products', action: 'create'}) do |f| %>
 <%= form_with(model: @product, local: true) do |f| %>
-  <%# <div class="form-group"> 
-    <label for="created_at">日付</label>
-    <%= f.date_field :created_at, class:"form-control"%>
-  <%# </div> %>
   <div class="form-group"> 
     <label for="name">商品名</label>
     <%= f.text_field :name, class:"form-control"%>
   </div>
-  <%# <div class="form-group"> 
-    <label for="maker_name">メーカー名</label>
-    <%= f.text_field :maker_name, class:"form-control"%>
-  <%# </div> %>
   <div class="form-group"> 
     <label for="price">金額</label>
     <%= f.number_field :price, min:0, class:"form-control"%>
@@ -21,10 +12,6 @@
     <label for="note">メモ</label>
     <%= f.text_field :note, class:"form-control"%>
   </div>
-  <%# <div class="form-group">  %>
-    <%# <label for="evaluation">評価</label>
-    <%= f.select :evaluation, [ ["要検討", 1], ["検討", 2], ["普通", 3], ["欲しい", 4], ["すごく欲しい", 5] ] , class:"form-control" %>
-  <%# </div> %>
   <div class="form-group"> 
     <%= f.hidden_field :evaluation, :value => "1" , class:"form-control", id:"sugie" %>
   </div>
@@ -53,15 +40,12 @@
     ☆
   </div>
 </div>
-<%# <button id="count">
-  確認！！
-</button> %>
 <script>
-  var star1 = document.getElementById('star-1');
-  var star2 = document.getElementById('star-2');
-  var star3 = document.getElementById('star-3');
-  var star4 = document.getElementById('star-4');
-  var star5 = document.getElementById('star-5');
+  const star1 = document.getElementById('star-1');
+  const star2 = document.getElementById('star-2');
+  const star3 = document.getElementById('star-3');
+  const star4 = document.getElementById('star-4');
+  const star5 = document.getElementById('star-5');
   star1.addEventListener('click', function () {
       star1.innerHTML = "★"
       star2.innerHTML = "☆"

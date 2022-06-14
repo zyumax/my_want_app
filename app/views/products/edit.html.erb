@@ -1,15 +1,6 @@
 <h1 class="display-4 text-primary">マイリスト編集</h1>
 
-<%# <%= form_for(@product, url: {controller: 'products', action: 'update'}) do |f| %>
 <%= form_with(model: @product, local: true) do |f| %>
-  <%# <div class="form-group"> 
-    <label for="name">商品名</label>
-    <%= f.text_field :name, class:"form-control"%>
-  <%# </div> %>
-  <%# <div class="form-group"> 
-    <label for="maker_name">メーカー名</label>
-    <%= f.text_field :maker_name, class:"form-control"%>
-  <%# </div %>
   <div class="form-group"> 
     <label for="price">金額</label>
     <%= f.number_field :price, min:0, class:"form-control"%>
@@ -19,7 +10,7 @@
     <%= f.text_field :note, class:"form-control"%>
   </div>
   <div class="form-group"> 
-    <%= f.hidden_field :evaluation, :value => "1" , class:"form-control", id:"sugie" %>
+    <%= f.hidden_field :evaluation, :value => @product.evaluation , class:"form-control", id:"sugie" %>
   </div>
   <div class="form-group"> 
     <%= f.submit "更新", class: "btn btn-primary" %>
@@ -30,30 +21,48 @@
 <p>評価</p>
 <div class="review-stars">
   <div id="star-1" class="true">
-    ★
+    <% if @product.evaluation >= 1%>
+      ★
+    <% else %>
+      ☆
+    <% end %>
   </div>
   <div id="star-2" class="">
-    ☆
+    <% if @product.evaluation >= 2%>
+      ★
+    <% else %>
+      ☆
+    <% end %>
   </div>
   <div id="star-3" class="">
-    ☆
+    <% if @product.evaluation >= 3%>
+      ★
+    <% else %>
+      ☆
+    <% end %>
   </div>
   <div id="star-4" class="">
-    ☆
+    <% if @product.evaluation >= 4%>
+      ★
+    <% else %>
+      ☆
+    <% end %>
   </div>
   <div id="star-5" class="">
-    ☆
+    <% if @product.evaluation >= 5%>
+      ★
+    <% else %>
+      ☆
+    <% end %>
   </div>
 </div>
-<%# <button id="count">
-  確認！！
-</button> %>
+
 <script>
-  var star1 = document.getElementById('star-1');
-  var star2 = document.getElementById('star-2');
-  var star3 = document.getElementById('star-3');
-  var star4 = document.getElementById('star-4');
-  var star5 = document.getElementById('star-5');
+  const star1 = document.getElementById('star-1');
+  const star2 = document.getElementById('star-2');
+  const star3 = document.getElementById('star-3');
+  const star4 = document.getElementById('star-4');
+  const star5 = document.getElementById('star-5');
   star1.addEventListener('click', function () {
       star1.innerHTML = "★"
       star2.innerHTML = "☆"
@@ -134,17 +143,4 @@
       document.getElementById("sugie").value = "5"
       console.log(document.getElementById("sugie").value)
   });
-  // document.getElementById('count').addEventListener('click', function () {
-  //   if (star1.classList.contains('true') == true) {
-  //     alert("１個なんやで")
-  //   } else if (star2.classList.contains('true') == true) {
-  //     alert("２個なんやで")
-  //   } else if (star3.classList.contains('true') == true) {
-  //     alert("３個なんやで")
-  //   } else if (star4.classList.contains('true') == true) {
-  //     alert("４個なんやで")
-  //   } else if (star5.classList.contains('true') == true) {
-  //     alert("５個なんやで")
-  //   }
-  // });
 </script>
