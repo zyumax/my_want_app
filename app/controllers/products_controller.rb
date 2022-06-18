@@ -5,7 +5,8 @@ class ProductsController < ApplicationController
   def index
     # @user = User.find(current_user.id)
     @user = current_user
-    @products = @user.products
+    @products = @user.products.order(evaluation: "DESC")
+    # @products = @products.where(evaluation: 3)
     @total_price = @products.sum(:price)
   end
 

@@ -40,7 +40,10 @@
     ☆
   </div>
 </div>
-<script>
+
+<%= javascript_pack_tag 'new' %>
+
+<%# <script>
   const star1 = document.getElementById('star-1');
   const star2 = document.getElementById('star-2');
   const star3 = document.getElementById('star-3');
@@ -126,17 +129,4 @@
       document.getElementById("sugie").value = "5"
       console.log(document.getElementById("sugie").value)
   });
-  // document.getElementById('count').addEventListener('click', function () {
-  //   if (star1.classList.contains('true') == true) {
-  //     alert("１個なんやで")
-  //   } else if (star2.classList.contains('true') == true) {
-  //     alert("２個なんやで")
-  //   } else if (star3.classList.contains('true') == true) {
-  //     alert("３個なんやで")
-  //   } else if (star4.classList.contains('true') == true) {
-  //     alert("４個なんやで")
-  //   } else if (star5.classList.contains('true') == true) {
-  //     alert("５個なんやで")
-  //   }
-  // });
-</script>
+</script> %>
