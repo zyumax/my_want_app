@@ -1,0 +1,32 @@
+<%# const btn = document.getElementById('btn'); %>
+<%# btn.addEventListener('click', function() {
+  modal.style.display = 'block';
+}) %>
+<%# window.alert('aaaaaa') %>
+var modal = document.getElementById("modal");
+var mask = document.getElementById('mask')
+modal.style.display = 'none';
+mask.style.display = 'none';
+if (<%= @product.evaluation %> == 1) {
+  document.getElementById('evaluation_1').insertAdjacentHTML('beforeend', '<%= j(render '/products/products1', product: @product) %>')
+} 
+if (<%= @product.evaluation %> == 2) {
+  document.getElementById('evaluation_2').insertAdjacentHTML('beforeend', '<%= j(render '/products/products2', product: @product) %>')
+} 
+if (<%= @product.evaluation %> == 3) {
+  document.getElementById('evaluation_3').insertAdjacentHTML('beforeend', '<%= j(render '/products/products3', product: @product) %>')
+} 
+if (<%= @product.evaluation %> == 4) {
+  document.getElementById('evaluation_4').insertAdjacentHTML('beforeend', '<%= j(render '/products/products4', product: @product) %>')
+} 
+if (<%= @product.evaluation %> == 5) {
+  document.getElementById('evaluation_5').insertAdjacentHTML('beforeend', '<%= j(render '/products/products5', product: @product) %>')
+} 
+
+document.getElementById("product_name").value = ''
+document.getElementById("product_price").value = ''
+document.getElementById("product_note").value = ''
+
+
+
+ 

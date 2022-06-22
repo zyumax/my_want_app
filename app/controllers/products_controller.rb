@@ -4,10 +4,10 @@ class ProductsController < ApplicationController
 
   def index
     # @user = User.find(current_user.id)
+    @product = Product.new
     @user = current_user
     @products = @user.products
     # @products = @user.products.order(evaluation: "DESC")
-    # @products = @products.where(evaluation: 3)
     @total_price = @products.sum(:price)
   end
 
@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
     # byebug
     @product = Product.new(product_params)
     if @product.save
-      redirect_to root_path
+      # redirect_to root_path
     else
       render 'new'
     end

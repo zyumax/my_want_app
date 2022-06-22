@@ -1,132 +1,48 @@
-<h1 class="display-4 text-primary">マイリストに追加</h1>
-<%= form_with(model: @product, local: true) do |f| %>
-  <div class="form-group"> 
-    <label for="name">商品名</label>
-    <%= f.text_field :name, class:"form-control"%>
-  </div>
-  <div class="form-group"> 
-    <label for="price">金額</label>
-    <%= f.number_field :price, min:0, class:"form-control"%>
-  </div>
-  <div class="form-group"> 
-    <label for="note">メモ</label>
-    <%= f.text_field :note, class:"form-control"%>
-  </div>
-  <div class="form-group"> 
-    <%= f.hidden_field :evaluation, :value => "1" , class:"form-control", id:"sugie" %>
-  </div>
+<div class="modal" id="modal">
+  <div class="modalsearch-contents">
+      <h1 class="display-4 text-primary" id="mylist">マイリストに追加</h1>
+      <%= form_with model: @product, url: products_path, method: :post, data: {remote: true} do |f| %>
+        <div class="form-group"> 
+          <label for="name">商品名</label>
+          <%= f.text_field :name, class:"form-control"%>
+        </div>
+        <div class="form-group"> 
+          <label for="price">金額</label>
+          <%= f.number_field :price, min:0, class:"form-control"%>
+        </div>
+        <div class="form-group"> 
+          <label for="note">メモ</label>
+          <%= f.text_field :note, class:"form-control"%>
+        </div>
+        <div class="form-group"> 
+          <%= f.hidden_field :evaluation, :value => "1" , class:"form-control", id:"sugie" %>
+        </div>
 
-  <div class="form-group"> 
-    <%= f.submit "登録", class: "btn btn-primary" %>
-  </div>
+        <div class="form-group"> 
+          <%= f.submit "登録", class: "btn btn-primary" %>
+        </div>
 
-<% end %>
+      <% end %>
 
-<p>評価</p>
-<div class="review-stars">
-  <div id="star-1" class="true">
-    ★
-  </div>
-  <div id="star-2" class="">
-    ☆
-  </div>
-  <div id="star-3" class="">
-    ☆
-  </div>
-  <div id="star-4" class="">
-    ☆
-  </div>
-  <div id="star-5" class="">
-    ☆
+      <p>評価</p>
+      <div class="review-stars">
+        <div id="star-1" class="true">
+          ★
+        </div>
+        <div id="star-2" class="">
+          ☆
+        </div>
+        <div id="star-3" class="">
+          ☆
+        </div>
+        <div id="star-4" class="">
+          ☆
+        </div>
+        <div id="star-5" class="">
+          ☆
+        </div>
+      </div>
+      <%= javascript_pack_tag 'new' %>
   </div>
 </div>
-
-<%= javascript_pack_tag 'new' %>
-
-<%# <script>
-  const star1 = document.getElementById('star-1');
-  const star2 = document.getElementById('star-2');
-  const star3 = document.getElementById('star-3');
-  const star4 = document.getElementById('star-4');
-  const star5 = document.getElementById('star-5');
-  star1.addEventListener('click', function () {
-      star1.innerHTML = "★"
-      star2.innerHTML = "☆"
-      star3.innerHTML = "☆"
-      star4.innerHTML = "☆"
-      star5.innerHTML = "☆"
-      star1.classList.add('true')
-      star2.classList.remove('true')
-      star3.classList.remove('true')
-      star4.classList.remove('true')
-      star5.classList.remove('true')
-      document.getElementById("sugie")
-      console.log(document.getElementById("sugie").value)
-      document.getElementById("sugie").value = "1"
-      console.log(document.getElementById("sugie").value)
-  });
-  star2.addEventListener('click', function () {
-      star1.innerHTML = "★"
-      star2.innerHTML = "★"
-      star3.innerHTML = "☆"
-      star4.innerHTML = "☆"
-      star5.innerHTML = "☆"
-      star1.classList.remove('true')
-      star2.classList.add('true')
-      star3.classList.remove('true')
-      star4.classList.remove('true')
-      star5.classList.remove('true')
-      document.getElementById("sugie")
-      console.log(document.getElementById("sugie").value)
-      document.getElementById("sugie").value = "2"
-      console.log(document.getElementById("sugie").value)
-  });
-  star3.addEventListener('click', function () {
-      star1.innerHTML = "★"
-      star2.innerHTML = "★"
-      star3.innerHTML = "★"
-      star4.innerHTML = "☆"
-      star5.innerHTML = "☆"
-      star1.classList.remove('true')
-      star2.classList.remove('true')
-      star3.classList.add('true')
-      star4.classList.remove('true')
-      star5.classList.remove('true')
-      document.getElementById("sugie")
-      console.log(document.getElementById("sugie").value)
-      document.getElementById("sugie").value = "3"
-      console.log(document.getElementById("sugie").value)
-  });
-  star4.addEventListener('click', function () {
-      star1.innerHTML = "★"
-      star2.innerHTML = "★"
-      star3.innerHTML = "★"
-      star4.innerHTML = "★"
-      star5.innerHTML = "☆"
-      star1.classList.remove('true')
-      star2.classList.remove('true')
-      star3.classList.remove('true')
-      star4.classList.add('true')
-      star5.classList.remove('true')
-      document.getElementById("sugie")
-      console.log(document.getElementById("sugie").value)
-      document.getElementById("sugie").value = "4"
-      console.log(document.getElementById("sugie").value)
-  });
-  star5.addEventListener('click', function () {
-      star1.innerHTML = "★"
-      star2.innerHTML = "★"
-      star3.innerHTML = "★"
-      star4.innerHTML = "★"
-      star5.innerHTML = "★"
-      star1.classList.remove('true')
-      star2.classList.remove('true')
-      star3.classList.remove('true')
-      star4.classList.remove('true')
-      star5.classList.add('true')
-      document.getElementById("sugie")
-      console.log(document.getElementById("sugie").value)
-      document.getElementById("sugie").value = "5"
-      console.log(document.getElementById("sugie").value)
-  });
-</script> %>
+<div class="masksearch"></div>
