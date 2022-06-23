@@ -2,7 +2,7 @@
   <div class="card-body">
     <h3 class="card-title"><%= product.name %></h3>
     <h3 class="card-subtitle"><%= number_to_currency(product.price, unit: "¥", precision: 0) %></h3>
-    <h4 class = "star-eva">"★★☆☆☆"</h4>
+    <h4 class = "star-eva">★★☆☆☆</h4>
     <p><%= link_to '編集', edit_product_path(id: product.id, sugie: "sugie"), method: :get, local: true %></p>
     <p><%= link_to '- 削除', product_path(product.id), method: :delete, local: true %></p>
   </div>
