@@ -2,11 +2,16 @@
 <h1 class="display-4 text-primary">マイリスト</h1>
 
 <div class="sum-price"> 
-  <label>合計金額：</label>
+  <label>合計金額</label>
   <%= number_to_currency(@total_price, unit: "¥", precision: 0) %>
 </div>
 
-<button id="btn">+新規</button>
+<div class="topper">
+  <button id="btn">+新規作成</button>
+  <% if user_signed_in? %>
+    <p><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></p>
+  <% end %>
+</div>
 
 <div class="container">
   <div class="row">
@@ -40,24 +45,20 @@
 
 <%# <p><%= link_to '予測画面(仮)', products_predict_path, class: "btn btn-success" %>
 
-<% if user_signed_in? %>
-  <p><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></p>
-<% end %>
-
 
 <div class="modal" id="modal">
   <h1 class="display-4 text-primary" id="mylist">マイリストに追加</h1>
       <%= form_with model: @product, url: products_path, method: :post, data: {remote: true} do |f| %>
         <div class="form-group"> 
-          <label for="name">商品名</label>
+          <label for="name" class="textbox">商品名</label>
           <%= f.text_field :name, class:"form-control"%>
         </div>
         <div class="form-group"> 
-          <label for="price">金額</label>
+          <label for="price" class="textbox">金額</label>
           <%= f.number_field :price, min:0, class:"form-control"%>
         </div>
         <div class="form-group"> 
-          <label for="note">メモ</label>
+          <label for="note" class="textbox">メモ</label>
           <%= f.text_field :note, class:"form-control"%>
         </div>
         <div class="form-group"> 
@@ -70,8 +71,8 @@
 
       <% end %>
 
-      <p>評価</p>
-      <div class="review-stars">
+      <%# <p>評価</p> %>
+      <div id="star-all" class="review-stars">
         <div id="star-1" class="true">
           ★
         </div>
