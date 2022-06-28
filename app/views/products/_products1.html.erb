@@ -3,8 +3,69 @@
     <h3 class="card-title"><%= product.name %></h3>
     <h3 class="card-subtitle"><%= number_to_currency(product.price, unit: "¥", precision: 0) %></h3>
     <h4 class = "star-eva">★☆☆☆☆</h4>
-    <p><i class="fa-solid fa-pen-to-square"></i></i><%= link_to '編集', edit_product_path(id: product.id, sugie: "sugie"), method: :get, local: true %></p>
-    <p id="edit"><i class="fa-solid fa-trash"></i><%= link_to '削除', product_path(product.id), method: :delete, local: true %></p>
+    <p id="edit_#{product.id}"><i class="fa-solid fa-pen-to-square"></i>編集</p>
+    <p><i class="fa-solid fa-trash"></i><%= link_to '削除', product_path(product.id), method: :delete, local: true %></p>
+  </div>
+
+  <div class="modal" id="#{product.id}">
+    <h1 class="display-4 text-primary">マイリスト編集</h1>
+    <%#= form_with model: product, url: edit_product_path, method: :get, data: {remote: true} do |f| %>
+    <%= form_with model: product, data: {remote: true} do |f| %>
+      <div class="form-group"> 
+        <label for="price">金額</label>
+        <%= f.number_field :price, min:0, class:"form-control"%>
+      </div>
+      <div class="form-group"> 
+        <label for="note">メモ</label>
+        <%= f.text_field :note, class:"form-control"%>
+      </div>
+      <div class="form-group"> 
+        <%= f.hidden_field :evaluation, :value => product.evaluation , class:"form-control", id:"sugie" %>
+      </div>
+      <div class="form-group"> 
+        <%= f.submit "更新", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    <p>評価</p>
+    <div class="review-stars">
+      <div id="star-1" class="true">
+        <% if product.evaluation >= 1%>
+          ★
+        <% else %>
+          ☆
+        <% end %>
+      </div>
+      <div id="star-2" class="">
+        <% if product.evaluation >= 2%>
+          ★
+        <% else %>
+          ☆
+        <% end %>
+      </div>
+      <div id="star-3" class="">
+        <% if product.evaluation >= 3%>
+          ★
+        <% else %>
+          ☆
+        <% end %>
+      </div>
+      <div id="star-4" class="">
+        <% if product.evaluation >= 4%>
+          ★
+        <% else %>
+          ☆
+        <% end %>
+      </div>
+      <div id="star-5" class="">
+        <% if product.evaluation >= 5%>
+          ★
+        <% else %>
+          ☆
+        <% end %>
+      </div>
+    </div>
+
+    <%= javascript_pack_tag 'edit' %>
   </div>
 <% end %>
 

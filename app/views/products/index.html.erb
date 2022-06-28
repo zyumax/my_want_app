@@ -46,7 +46,7 @@
 <%# <p><%= link_to '予測画面(仮)', products_predict_path, class: "btn btn-success" %>
 
 
-<div class="modal" id="modal">
+<div class="modal" id="modal-new">
   <h1 class="display-4 text-primary" id="mylist">マイリストに追加</h1>
       <%= form_with model: @product, url: products_path, method: :post, data: {remote: true} do |f| %>
         <div class="form-group"> 
@@ -71,7 +71,6 @@
 
       <% end %>
 
-      <%# <p>評価</p> %>
       <div id="star-all" class="review-stars">
         <div id="star-1" class="true">
           ★
@@ -92,28 +91,6 @@
       <%= javascript_pack_tag 'new' %>
 </div>
 
-<div class="modal" id="modal">
-  <h1 class="display-4 text-primary">マイリスト編集</h1>
-  <%#= form_with model: @product, url: edit_product_path, method: :get, data: {remote: true} do |f| %>
-  <%= form_with model: @product, data: {remote: true} do |f| %>
-    <div class="form-group"> 
-      <label for="price">金額</label>
-      <%= f.number_field :price, min:0, class:"form-control"%>
-    </div>
-    <div class="form-group"> 
-      <label for="note">メモ</label>
-      <%= f.text_field :note, class:"form-control"%>
-    </div>
-    <div class="form-group"> 
-      <%= f.hidden_field :evaluation, :value => @product.evaluation , class:"form-control", id:"sugie" %>
-    </div>
-    <div class="form-group"> 
-      <%= f.submit "更新", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-  <%= javascript_pack_tag 'edit' %>
-</div>
-
 <div class="mask" id="mask"></div>
 
 
@@ -121,14 +98,15 @@
 <script>
 var btn = document.getElementById('btn')
 var mask = document.getElementById('mask')
-var modal = document.getElementById('modal')
-var edit = document.getElementById('edit')
+var modal = document.getElementById('modal-new')
+var modal_edit = document.getElementById("#{product.id}")
+var edit = document.getElementById('edit_#{product.id}')
 btn.addEventListener('click', function() {
   modal.style.display = 'block';
   mask.style.display = 'block';
 })
 edit.addEventListener('click', function() {
-  modal.style.display = 'block';
+  modal_edit.style.display = 'block';
   mask.style.display = 'block';
 })
 mask.addEventListener('click', function() {
