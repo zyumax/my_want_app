@@ -1,7 +1,7 @@
 
 <h1 class="display-4 text-primary">マイリスト</h1>
 
-<div class="sum-price"> 
+<div class="sum-price" id="sum-price"> 
   <label>合計金額</label>
   <%= number_to_currency(@total_price, unit: "¥", precision: 0) %>
 </div>
@@ -99,14 +99,9 @@
 var btn = document.getElementById('btn')
 var mask = document.getElementById('mask')
 var modal = document.getElementById('modal-new')
-var modal_edit = document.getElementById("#{product.id}")
-var edit = document.getElementById('edit_#{product.id}')
+
 btn.addEventListener('click', function() {
   modal.style.display = 'block';
-  mask.style.display = 'block';
-})
-edit.addEventListener('click', function() {
-  modal_edit.style.display = 'block';
   mask.style.display = 'block';
 })
 mask.addEventListener('click', function() {
