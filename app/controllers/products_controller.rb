@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
     # byebug
     @product = Product.new(product_params)
     if @product.save
-      # redirect_to root_path
+      # @total_price = product_params[:total_price]
     else
       render 'new'
     end

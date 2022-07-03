@@ -1,12 +1,17 @@
 
 <h1 class="display-4 text-primary">マイリスト</h1>
 
-<div class="sum-price"> 
-  <label>合計金額：</label>
-  <%= number_to_currency(@total_price, unit: "¥", precision: 0) %>
+<div class="sum-price" id="sum-price"> 
+  <label>合計金額</label>
+  <p><span>¥</span><span id="sumprice"><%= @total_price %></span></p>
 </div>
 
-<button id="btn">+新規</button>
+<div class="topper">
+  <button id="btn">+新規作成</button>
+  <% if user_signed_in? %>
+    <p><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></p>
+  <% end %>
+</div>
 
 <div class="container">
   <div class="row">
@@ -40,25 +45,21 @@
 
 <%# <p><%= link_to '予測画面(仮)', products_predict_path, class: "btn btn-success" %>
 
-<% if user_signed_in? %>
-  <p><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></p>
-<% end %>
 
-
-<div class="modal" id="modal">
+<div class="modal" id="modal-new">
   <h1 class="display-4 text-primary" id="mylist">マイリストに追加</h1>
       <%= form_with model: @product, url: products_path, method: :post, data: {remote: true} do |f| %>
         <div class="form-group"> 
-          <label for="name">商品名</label>
-          <%= f.text_field :name, class:"form-control"%>
+          <label for="name" class="textbox">商品名</label>
+          <%= f.text_field :name, class:"form-control" %>
         </div>
         <div class="form-group"> 
-          <label for="price">金額</label>
-          <%= f.number_field :price, min:0, class:"form-control"%>
+          <label for="price" class="textbox">金額</label>
+          <%= f.number_field :price, min:0, class:"form-control" %>
         </div>
         <div class="form-group"> 
-          <label for="note">メモ</label>
-          <%= f.text_field :note, class:"form-control"%>
+          <label for="note" class="textbox">メモ</label>
+          <%= f.text_field :note, class:"form-control" %>
         </div>
         <div class="form-group"> 
           <%= f.hidden_field :evaluation, :value => "1" , class:"form-control", id:"sugie" %>
@@ -70,8 +71,7 @@
 
       <% end %>
 
-      <p>評価</p>
-      <div class="review-stars">
+      <div id="star-all" class="review-stars">
         <div id="star-1" class="true">
           ★
         </div>
@@ -90,6 +90,7 @@
       </div>
       <%= javascript_pack_tag 'new' %>
 </div>
+
 <div class="mask" id="mask"></div>
 
 
@@ -97,7 +98,8 @@
 <script>
 var btn = document.getElementById('btn')
 var mask = document.getElementById('mask')
-var modal = document.getElementById('modal')
+var modal = document.getElementById('modal-new')
+
 btn.addEventListener('click', function() {
   modal.style.display = 'block';
   mask.style.display = 'block';
