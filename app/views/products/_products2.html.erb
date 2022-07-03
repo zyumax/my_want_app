@@ -13,18 +13,18 @@
     <%= form_with model: product, data: {remote: true} do |f| %>
       <div class="form-group"> 
         <label for="name" class="textbox">商品名</label>
-        <%= f.text_field :name, class:"form-control"%>
+        <%= f.text_field :name, class:"form-control", id:"productn_#{product.id}" %>
       </div>
       <div class="form-group"> 
         <label for="price">金額</label>
-        <%= f.number_field :price, min:0, class:"form-control"%>
+        <%= f.number_field :price, min:0, class:"form-control", id:"productp_#{product.id}" %>
       </div>
       <div class="form-group"> 
         <label for="note">メモ</label>
-        <%= f.text_field :note, class:"form-control"%>
+        <%= f.text_field :note, class:"form-control", id:"productno_#{product.id}" %>
       </div>
       <div class="form-group"> 
-        <%= f.hidden_field :evaluation, :value => product.evaluation , class:"form-control", id:"eval_<%= product.id %>" %>
+        <%= f.hidden_field :evaluation, :value => product.evaluation , class:"form-control", id:"hidden_#{product.id}" %>
       </div>
       <div class="form-group"> 
         <%= f.submit "更新", class: "btn btn-primary" %>
@@ -71,107 +71,108 @@
 
     <%#= javascript_pack_tag 'edit' %>
   </div>
+
+
+  <div class="mask" id="mask_<%= product.id %>"></div>
+  <script>
+  var modal_edit<%= product.id %> = document.getElementById("modal_<%= product.id %>")
+  var edit<%= product.id %> = document.getElementById("edit_<%= product.id %>")
+  var mask<%= product.id %> = document.getElementById("mask_<%= product.id %>")
+  edit<%= product.id %>.addEventListener('click', function() {
+    modal_edit<%= product.id %>.style.display = 'block';
+    mask<%= product.id %>.style.display = 'block';
+  });
+  mask<%= product.id %>.addEventListener('click', function() {
+    modal_edit<%= product.id %>.style.display = 'none';
+    mask<%= product.id %>.style.display = 'none';
+  });
+
+  const star1<%= product.id %> = document.getElementById("star-1_<%= product.id %>");
+  const star2<%= product.id %> = document.getElementById("star-2_<%= product.id %>");
+  const star3<%= product.id %> = document.getElementById("star-3_<%= product.id %>");
+  const star4<%= product.id %> = document.getElementById("star-4_<%= product.id %>");
+  const star5<%= product.id %> = document.getElementById("star-5_<%= product.id %>");
+  star1<%= product.id %>.addEventListener('click', function () {
+      star1<%= product.id %>.innerHTML = "★"
+      star2<%= product.id %>.innerHTML = "☆"
+      star3<%= product.id %>.innerHTML = "☆"
+      star4<%= product.id %>.innerHTML = "☆"
+      star5<%= product.id %>.innerHTML = "☆"
+      star1<%= product.id %>.classList.add('true')
+      star2<%= product.id %>.classList.remove('true')
+      star3<%= product.id %>.classList.remove('true')
+      star4<%= product.id %>.classList.remove('true')
+      star5<%= product.id %>.classList.remove('true')
+      document.getElementById("hidden_<%= product.id %>")
+      console.log(document.getElementById("hidden_<%= product.id %>").value)
+      document.getElementById("hidden_<%= product.id %>").value = "1"
+      console.log(document.getElementById("hidden_<%= product.id %>").value)
+  });
+  star2<%= product.id %>.addEventListener('click', function () {
+      star1<%= product.id %>.innerHTML = "★"
+      star2<%= product.id %>.innerHTML = "★"
+      star3<%= product.id %>.innerHTML = "☆"
+      star4<%= product.id %>.innerHTML = "☆"
+      star5<%= product.id %>.innerHTML = "☆"
+      star1<%= product.id %>.classList.remove('true')
+      star2<%= product.id %>.classList.add('true')
+      star3<%= product.id %>.classList.remove('true')
+      star4<%= product.id %>.classList.remove('true')
+      star5<%= product.id %>.classList.remove('true')
+      document.getElementById("hidden_<%= product.id %>")
+      console.log(document.getElementById("hidden_<%= product.id %>").value)
+      document.getElementById("hidden_<%= product.id %>").value = "2"
+      console.log(document.getElementById("hidden_<%= product.id %>").value)
+  });
+  star3<%= product.id %>.addEventListener('click', function () {
+      star1<%= product.id %>.innerHTML = "★"
+      star2<%= product.id %>.innerHTML = "★"
+      star3<%= product.id %>.innerHTML = "★"
+      star4<%= product.id %>.innerHTML = "☆"
+      star5<%= product.id %>.innerHTML = "☆"
+      star1<%= product.id %>.classList.remove('true')
+      star2<%= product.id %>.classList.remove('true')
+      star3<%= product.id %>.classList.add('true')
+      star4<%= product.id %>.classList.remove('true')
+      star5<%= product.id %>.classList.remove('true')
+      document.getElementById("hidden_<%= product.id %>")
+      console.log(document.getElementById("hidden_<%= product.id %>").value)
+      document.getElementById("hidden_<%= product.id %>").value = "3"
+      console.log(document.getElementById("hidden_<%= product.id %>").value)
+  });
+  star4<%= product.id %>.addEventListener('click', function () {
+      star1<%= product.id %>.innerHTML = "★"
+      star2<%= product.id %>.innerHTML = "★"
+      star3<%= product.id %>.innerHTML = "★"
+      star4<%= product.id %>.innerHTML = "★"
+      star5<%= product.id %>.innerHTML = "☆"
+      star1<%= product.id %>.classList.remove('true')
+      star2<%= product.id %>.classList.remove('true')
+      star3<%= product.id %>.classList.remove('true')
+      star4<%= product.id %>.classList.add('true')
+      star5<%= product.id %>.classList.remove('true')
+      document.getElementById("hidden_<%= product.id %>")
+      console.log(document.getElementById("hidden_<%= product.id %>").value)
+      document.getElementById("hidden_<%= product.id %>").value = "4"
+      console.log(document.getElementById("hidden_<%= product.id %>").value)
+  });
+  star5<%= product.id %>.addEventListener('click', function () {
+      star1<%= product.id %>.innerHTML = "★"
+      star2<%= product.id %>.innerHTML = "★"
+      star3<%= product.id %>.innerHTML = "★"
+      star4<%= product.id %>.innerHTML = "★"
+      star5<%= product.id %>.innerHTML = "★"
+      star1<%= product.id %>.classList.remove('true')
+      star2<%= product.id %>.classList.remove('true')
+      star3<%= product.id %>.classList.remove('true')
+      star4<%= product.id %>.classList.remove('true')
+      star5<%= product.id %>.classList.add('true')
+      document.getElementById("hidden_<%= product.id %>")
+      console.log(document.getElementById("hidden_<%= product.id %>").value)
+      document.getElementById("hidden_<%= product.id %>").value = "5"
+      console.log(document.getElementById("hidden_<%= product.id %>").value)
+  });
+
+  </script>
+
 <% end %>
-
-<div class="mask" id="mask_<%= product.id %>"></div>
-<script>
-var modal_edit<%= product.id %> = document.getElementById("modal_<%= product.id %>")
-var edit<%= product.id %> = document.getElementById("edit_<%= product.id %>")
-var mask<%= product.id %> = document.getElementById("mask_<%= product.id %>")
-edit<%= product.id %>.addEventListener('click', function() {
-  modal_edit<%= product.id %>.style.display = 'block';
-  mask<%= product.id %>.style.display = 'block';
-});
-mask<%= product.id %>.addEventListener('click', function() {
-  modal_edit<%= product.id %>.style.display = 'none';
-  mask<%= product.id %>.style.display = 'none';
-});
-
-const star1<%= product.id %> = document.getElementById("star-1_<%= product.id %>");
-const star2<%= product.id %> = document.getElementById("star-2_<%= product.id %>");
-const star3<%= product.id %> = document.getElementById("star-3_<%= product.id %>");
-const star4<%= product.id %> = document.getElementById("star-4_<%= product.id %>");
-const star5<%= product.id %> = document.getElementById("star-1_<%= product.id %>");
-star1<%= product.id %>.addEventListener('click', function () {
-    star1<%= product.id %>.innerHTML = "★"
-    star2<%= product.id %>.innerHTML = "☆"
-    star3<%= product.id %>.innerHTML = "☆"
-    star4<%= product.id %>.innerHTML = "☆"
-    star5<%= product.id %>.innerHTML = "☆"
-    star1<%= product.id %>.classList.add('true')
-    star2<%= product.id %>.classList.remove('true')
-    star3<%= product.id %>.classList.remove('true')
-    star4<%= product.id %>.classList.remove('true')
-    star5<%= product.id %>.classList.remove('true')
-    document.getElementById("eval_<%= product.id %>")
-    console.log(document.getElementById("eval_<%= product.id %>").value)
-    document.getElementById("eval_<%= product.id %>").value = "1"
-    console.log(document.getElementById("eval_<%= product.id %>").value)
-});
-star2<%= product.id %>.addEventListener('click', function () {
-    star1<%= product.id %>.innerHTML = "★"
-    star2<%= product.id %>.innerHTML = "★"
-    star3<%= product.id %>.innerHTML = "☆"
-    star4<%= product.id %>.innerHTML = "☆"
-    star5<%= product.id %>.innerHTML = "☆"
-    star1<%= product.id %>.classList.remove('true')
-    star2<%= product.id %>.classList.add('true')
-    star3<%= product.id %>.classList.remove('true')
-    star4<%= product.id %>.classList.remove('true')
-    star5<%= product.id %>.classList.remove('true')
-    document.getElementById("eval_<%= product.id %>")
-    console.log(document.getElementById("eval_<%= product.id %>").value)
-    document.getElementById("eval_<%= product.id %>").value = "2"
-    console.log(document.getElementById("eval_<%= product.id %>").value)
-});
-star3<%= product.id %>.addEventListener('click', function () {
-    star1<%= product.id %>.innerHTML = "★"
-    star2<%= product.id %>.innerHTML = "★"
-    star3<%= product.id %>.innerHTML = "★"
-    star4<%= product.id %>.innerHTML = "☆"
-    star5<%= product.id %>.innerHTML = "☆"
-    star1<%= product.id %>.classList.remove('true')
-    star2<%= product.id %>.classList.remove('true')
-    star3<%= product.id %>.classList.add('true')
-    star4<%= product.id %>.classList.remove('true')
-    star5<%= product.id %>.classList.remove('true')
-    document.getElementById("eval_<%= product.id %>")
-    console.log(document.getElementById("eval_<%= product.id %>").value)
-    document.getElementById("eval_<%= product.id %>").value = "3"
-    console.log(document.getElementById("eval_<%= product.id %>").value)
-});
-star4<%= product.id %>.addEventListener('click', function () {
-    star1<%= product.id %>.innerHTML = "★"
-    star2<%= product.id %>.innerHTML = "★"
-    star3<%= product.id %>.innerHTML = "★"
-    star4<%= product.id %>.innerHTML = "★"
-    star5<%= product.id %>.innerHTML = "☆"
-    star1<%= product.id %>.classList.remove('true')
-    star2<%= product.id %>.classList.remove('true')
-    star3<%= product.id %>.classList.remove('true')
-    star4<%= product.id %>.classList.add('true')
-    star5<%= product.id %>.classList.remove('true')
-    document.getElementById("eval_<%= product.id %>")
-    console.log(document.getElementById("eval_<%= product.id %>").value)
-    document.getElementById("eval_<%= product.id %>").value = "4"
-    console.log(document.getElementById("eval_<%= product.id %>").value)
-});
-star5<%= product.id %>.addEventListener('click', function () {
-    star1<%= product.id %>.innerHTML = "★"
-    star2<%= product.id %>.innerHTML = "★"
-    star3<%= product.id %>.innerHTML = "★"
-    star4<%= product.id %>.innerHTML = "★"
-    star5<%= product.id %>.innerHTML = "★"
-    star1<%= product.id %>.classList.remove('true')
-    star2<%= product.id %>.classList.remove('true')
-    star3<%= product.id %>.classList.remove('true')
-    star4<%= product.id %>.classList.remove('true')
-    star5<%= product.id %>.classList.add('true')
-    document.getElementById("eval_<%= product.id %>")
-    console.log(document.getElementById("eval_<%= product.id %>").value)
-    document.getElementById("eval_<%= product.id %>").value = "5"
-    console.log(document.getElementById("eval_<%= product.id %>").value)
-});
-
-
-</script>
