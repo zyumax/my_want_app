@@ -1,15 +1,14 @@
 
-<h1 class="display-4 text-primary">マイリスト</h1>
+<h1 class="display-4 text-primary">商品登録</h1>
 
 <div class="sum-price" id="sum-price"> 
-  <label>合計金額</label>
-  <p><span>¥</span><span id="sumprice"><%= @total_price %></span></p>
+  <label>合計金額 </label><span>¥</span><span id="sumprice"><%= @total_price %></span>
 </div>
 
 <div class="topper">
   <button id="btn">+新規作成</button>
   <% if user_signed_in? %>
-    <p><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></p>
+    <p class="signoutbox"><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %><i class="fa-solid fa-right-from-bracket"></i></p>
   <% end %>
 </div>
 
