@@ -48,7 +48,7 @@
 
 <div class="modal" id="modal-new">
   <h1 class="display-4 text-primary" id="mylist">マイリストに追加</h1>
-      <%= form_with model: @product, url: products_path, method: :post, data: {remote: true} do |f| %>
+      <%= form_with model: Product.new, url: products_path, method: :post, data: {remote: true} do |f| %>
         <div class="form-group"> 
           <label for="name" class="textbox">商品名</label>
           <%= f.text_field :name, class:"form-control" %>
