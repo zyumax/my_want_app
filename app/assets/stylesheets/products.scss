@@ -100,10 +100,33 @@
 }
 
 #btn {
+  height: 40px;
+  margin-right: 970px;
+  background: #99FFFF;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 10px;
+  color: #313131;
+}
+
+#btn:hover {
+  background: #33FFFF;
+  color: black;
+}
+
+.signoutbox {
+  background: #FF9933;
+  border: solid 2px #000000;
+  border-radius: 10px;
   padding: 5px;
-  width: 80px;
-  height: 30px;
-  margin-right: 1000px;
+}
+
+.topper {
+  width: 1185px;
+  border-bottom: solid 2px #DDDDDD
 }
 
 .header {
