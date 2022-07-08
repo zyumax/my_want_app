@@ -1,14 +1,18 @@
 
-<h1 class="display-4 text-primary">商品登録</h1>
+<h1 class="explanation">商品登録画面</h1>
+<p class="explanation">「+新規登録」ボタンをクリックすると、商品の登録ができます。</p>
+<p class="explanation">商品名、金額を入力し、5点満点で自分の欲しいもの度に合わせて星の部分をクリックして「登録」ボタンを押してください。(メモ欄は自由にお使いください)</p>
 
 <div class="sum-price" id="sum-price"> 
   <label>合計金額 </label><span>¥</span><span id="sumprice"><%= @total_price %></span>
 </div>
 
 <div class="topper">
-  <button id="btn">+新規作成</button>
+  <button id="btn"><i class="fa-solid fa-square-plus"></i>新規作成</button>
   <% if user_signed_in? %>
-    <p class="signoutbox"><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %><i class="fa-solid fa-right-from-bracket"></i></p>
+    <%= link_to(destroy_user_session_path, method: :delete, class:"signoutbox1") do %>
+      <p class="signoutbox">サインアウト<i class="fa-solid fa-right-from-bracket"></i><p>
+    <% end %>
   <% end %>
 </div>
 

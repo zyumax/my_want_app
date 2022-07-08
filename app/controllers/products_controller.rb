@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :redirect_root
 
   def index
     # @user = User.find(current_user.id)
@@ -53,5 +53,9 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :price, :maker_name, :note, :evaluation).merge(user_id: current_user.id)
+  end
+
+  def redirect_root
+    redirect_to top_path unless user_signed_in?
   end
 end

@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.explanation {
+  margin: 0.2em 0px;
+}
+
 .review-stars {
   display: flex;
   color: orange;
@@ -43,6 +47,7 @@
   font-size: larger;
   font-weight: bold;
   background-color: lightpink;
+  margin-top: 20px;
 }
 
 .card-title, .card-subtitle, .star-eva {
@@ -96,12 +101,15 @@
 
 .topper {
   display: flex;
-  
+  width: 1185px;
+  height: 60px;
+  border-bottom: solid 2px #DDDDDD
 }
 
 #btn {
   height: 40px;
   margin-right: 970px;
+  margin-top: 13px;
   background: #99FFFF;
   border-radius: 10px;
   position: relative;
@@ -118,14 +126,23 @@
 }
 
 .signoutbox {
-  background: #FF9933;
-  border: solid 2px #000000;
+  background-color: white;
+  border: solid 1px #000000;
   border-radius: 10px;
   padding: 5px;
+  color: black;
 }
 
-.topper {
-  width: 1185px;
+.signoutbox:hover {
+  background: #F0F8FF	;
+  color: black;
+}
+
+.signoutbox1 {
+  text-decoration: none;
+}
+
+.nav {
   border-bottom: solid 2px #DDDDDD
 }
 
@@ -134,14 +151,49 @@
 }
 
 .headerli1, .headerli2 {
-  margin-top: 27px;
+  margin-top: 20px;
 }
 
 .headerli1 {
-  margin-left: 750px;
-  padding-right: 60px;
+  margin-left: 800px;
+  margin-right: 20px;
+}
+
+.innerheaderli1 {
+  background: #FF8C00;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.innerheaderli1:hover {
+  background: #FFA500;
+  color: white;
 }
 
 .headerli2 {
-  margin-left: 30px;
+  margin-left: 10px;
+}
+
+.innerheaderli2 {
+  margin-top: 13px;
+  display: block;
+  width: 100px;
+  height: 38px;
+  line-height: 38px;
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.innerheaderli2:hover {
+  background: #F0F8FF	;
+  color: black;
+}
+
+.topmain {
+  text-align: center;
 }
