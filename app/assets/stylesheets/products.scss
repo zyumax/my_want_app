@@ -58,14 +58,15 @@
   position: fixed;
   background-color: rgba(255, 255, 255, 0.8);
   background-blend-mode: lighten;
-  width: 80vw;
-  height: 70vh;
+  width: 50vw;
+  height: 50vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
   border-radius: 10px;
   z-index: 2;
   display: none;
+  // text-align: center;
 }
 
 .modalsearch-contents {
@@ -83,6 +84,12 @@
   background-color: rgba(192, 192, 192, 0.9);
   z-index: 1;
   display: none;
+}
+
+.editpointer {
+  cursor: pointer;
+  width: 54px;
+  // border-bottom: solid 2px orange;
 }
 
 .textbox {
@@ -196,4 +203,19 @@
 
 .topmain {
   text-align: center;
+}
+
+.topmainp {
+  margin: 30px;
+}
+
+.form-control {
+  width: 300px;
+}
+
+.topphoto {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
 }

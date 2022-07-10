@@ -16,10 +16,10 @@ class ProductsController < ApplicationController
   end
 
   def create
-    # byebug
     @product = Product.new(product_params)
     if @product.save
-      # @total_price = product_params[:total_price]
+      # byebug
+      @total_price = params[:total_price].to_i + @product.price
     else
       render 'new'
     end

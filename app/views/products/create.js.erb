@@ -3,14 +3,19 @@ var mask = document.getElementById('mask');
 modal.style.display = 'none';
 mask.style.display = 'none';
 var sumprice = document.getElementById("sumprice");
-console.log(sumprice);
-var sumprice  = Number(sumprice.textContent); 
-console.log(sumprice);
-var totalprice = sumprice + <%= @product.price %>
-console.log(totalprice);
-console.log(sumprice);
-document.getElementById("sumprice").innerHTML = totalprice;
-console.log(sumprice);
+console.log("aaa", sumprice);
+<%# var sumprice  = Number(sumprice.textContent);  %>
+console.log("bbb", sumprice);
+var totalprice = <%= @total_price %>;
+console.log("ccc", totalprice);
+console.log("ddd", sumprice);
+document.getElementById("sumprice").innerHTML = totalprice.toLocaleString();
+products_create_form.action = "http://localhost:3000/products?total_price=" + '<%= @total_price %>';
+<%# document.getElementById("sumprice").innerHTML.toLocaleString(); %>
+
+console.log("ttt", products_create);
+
+console.log("ccc", sumprice);
 
 document.getElementById("product_name").value = ''
 document.getElementById("product_price").value = ''
@@ -150,4 +155,4 @@ var modal_edit<%= @product.id %> = document.getElementById("modal_<%= @product.i
   });
 
 
-alert("aaaaa")
+<%# alert("aaaaa") %>

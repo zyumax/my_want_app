@@ -1,7 +1,6 @@
-
 <h1 class="explanation">商品登録画面</h1>
 <p class="explanation">「+新規登録」ボタンをクリックすると、商品の登録ができます。</p>
-<p class="explanation">商品名、金額を入力し、5点満点で自分の欲しいもの度に合わせて星の部分をクリックして「登録」ボタンを押してください。(メモ欄は自由にお使いください)</p>
+<p class="explanation">商品名、金額を入力し、5段階で自分の購入意欲度に合わせて星の部分をクリックして「登録」ボタンを押してください。(メモ欄は自由にお使いください)</p>
 
 <div class="sum-price" id="sum-price"> 
   <label>合計金額 </label><span>¥</span><span id="sumprice"><%= @total_price %></span>
@@ -50,8 +49,8 @@
 
 
 <div class="modal" id="modal-new">
-  <h1 class="display-4 text-primary" id="mylist">マイリストに追加</h1>
-      <%= form_with model: Product.new, url: products_path, method: :post, data: {remote: true} do |f| %>
+  <h1 class="display-4 text-primary" id="mylist">商品登録</h1>
+      <%= form_with model: Product.new, url: products_path(total_price: @total_price), id: 'products_create_form',  method: :post, data: {remote: true} do |f| %>
         <div class="form-group"> 
           <label for="name" class="textbox">商品名</label>
           <%= f.text_field :name, class:"form-control" %>
@@ -111,4 +110,12 @@ mask.addEventListener('click', function() {
   modal.style.display = 'none';
   mask.style.display = 'none';
 })
+
+// var num = document.getElementById("sumprice");
+// console.log(num);
+// var price = Number(num.textContent).toLocaleString();
+// // document.getElementById("sumprice").innerHTML = price;
+// console.log("xyz", price)
+var products_create = document.getElementById("products_create_form")
+console.log("uuu", products_create.action);
 </script>
