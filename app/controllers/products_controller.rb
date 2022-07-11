@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   before_action :redirect_root
+  # helper_method :number_to_currency
 
   def index
     # @user = User.find(current_user.id)
@@ -8,6 +9,7 @@ class ProductsController < ApplicationController
     @user = current_user
     @products = @user.products
     # @products = @user.products.order(evaluation: "DESC")
+    # @total_price = @products.sum(:price).to_s(:delimited)
     @total_price = @products.sum(:price)
   end
 

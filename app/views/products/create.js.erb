@@ -10,8 +10,13 @@ var totalprice = <%= @total_price %>;
 console.log("ccc", totalprice);
 console.log("ddd", sumprice);
 document.getElementById("sumprice").innerHTML = totalprice.toLocaleString();
-products_create_form.action = "http://localhost:3000/products?total_price=" + '<%= @total_price %>';
-<%# document.getElementById("sumprice").innerHTML.toLocaleString(); %>
+
+console.log(location.host);
+if (location.host == "localhost:3000") {
+  products_create_form.action = "http://localhost:3000/products?total_price=" + '<%= @total_price %>';
+} else if (location.host == "my-want.life") {
+  products_create_form.action = "https://my-want.life/products?total_price=" + '<%= @total_price %>';
+}
 
 console.log("ttt", products_create);
 
