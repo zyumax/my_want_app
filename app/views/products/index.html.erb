@@ -3,7 +3,7 @@
 <p class="explanation">商品名、金額を入力し、5段階で自分の購入意欲度に合わせて星の部分をクリックして「登録」ボタンを押してください。(メモ欄は自由にお使いください)</p>
 
 <div class="sum-price" id="sum-price"> 
-  <label>合計金額 </label><span>¥</span><span id="sumprice"><%= @total_price %></span>
+  <label>合計金額 </label><span>¥</span><span id="sumprice"><%= @total_price.to_s(:delimited) %></span>
 </div>
 
 <div class="topper">
@@ -118,4 +118,5 @@ mask.addEventListener('click', function() {
 // console.log("xyz", price)
 var products_create = document.getElementById("products_create_form")
 console.log("uuu", products_create.action);
+window.history.pushState(null, null,'/aaaa');
 </script>
