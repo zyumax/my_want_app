@@ -9,7 +9,6 @@
 
   <div class="modal" id="modal_<%= product.id %>">
     <h1 class="display-4 text-primary">商品情報編集</h1>
-    <%#= form_with model: product, url: edit_product_path, method: :get, data: {remote: true} do |f| %>
     <%= form_with model: product, url: product_path(product.id), method: :patch, data: {local: true} do |f| %>
       <div class="form-group"> 
         <label for="name" class="textbox">商品名</label>
@@ -171,5 +170,4 @@
       console.log(document.getElementById("hidden_<%= product.id %>").value)
   });
   </script>
-
 <% end %>

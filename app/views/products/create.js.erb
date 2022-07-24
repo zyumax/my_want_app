@@ -4,7 +4,6 @@ modal.style.display = 'none';
 mask.style.display = 'none';
 var sumprice = document.getElementById("sumprice");
 console.log("aaa", sumprice);
-<%# var sumprice  = Number(sumprice.textContent);  %>
 console.log("bbb", sumprice);
 var totalprice = <%= @total_price %>;
 console.log("ccc", totalprice);
@@ -158,6 +157,3 @@ var modal_edit<%= @product.id %> = document.getElementById("modal_<%= @product.i
       document.getElementById("hidden_<%= @product.id %>").value = "5"
       console.log(document.getElementById("hidden_<%= @product.id %>").value)
   });
-
-
-<%# alert("aaaaa") %>
