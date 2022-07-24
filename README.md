@@ -24,4 +24,4 @@ https://qiita.com/zyumax/private/469b1d3388aaea255af4
   * Git/GitHub
 
 # インフラ構成図
-
+![Group 1-3](https://user-images.githubusercontent.com/81089877/180642031-66811fa0-aaac-4d38-88ad-efd0087e4e2d.jpg)
