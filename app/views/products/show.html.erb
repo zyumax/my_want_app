@@ -14,10 +14,6 @@
         <td><%= number_to_currency(@product.price, unit: "¥", precision: 0) %></td> 
         <td><%= @product.evaluation %></td>  
         <td><%= l @product.updated_at, format: :short %></td>
-        <%# <td><%= if @product.updated_at == true
-                  @product.updated_at
-                else 
-                  @product.created_at %>
       </tr>
   </tbody> 
 </table>  
