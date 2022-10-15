@@ -58,3 +58,21 @@
   cursor: pointer;
   background: #f0c14b;
 } 
+
+.actions {
+  margin-bottom: 26px;
+} 
+
+.actions input[type="submit"] {
+  border-style: none;
+  width: 100%;
+  height: 31px;
+  background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+  border-radius: 3px;
+  border: 1px #a88734 solid;
+}
+
+.actions input[type="submit"]:hover {
+  cursor: pointer;
+  background: #f0c14b;
+} 
